@@ -1,36 +1,34 @@
-ESX = exports["es_extended"]:getSharedObject()
-
 RegisterNetEvent("Show:Chat")
 AddEventHandler("Show:Chat", function()
-    SendNUIMessage({
-        action = "show",
-    })
-    
+    SendNUIMessage({action = "show",})
+    SetNuiFocus(true, true)
 end)
 
 RegisterNetEvent("Hide:Chat")
 AddEventHandler("Hide:Chat", function()
-    SendNUIMessage({
-        action = "hide",
-    })
+    SendNUIMessage({action = "hide",})
+    SetNuiFocus(false, false)
 end)
 
 RegisterNUICallback("message", function(data)
-    local Input  = data.input
-    local cleanedCommand = Input:sub(2)
-
+    local input = data.input
+    local cleanedCommand = input:sub(2)
     ExecuteCommand(cleanedCommand)
+    SetNuiFocus(false, false)
 end)
 
+RegisterNUICallback("removeFocus", function(data)
+    TriggerEvent("Hide:Chat")
+end)
 
-Citizen.CreateThread(function()
-  while true do
+CreateThread(function()
+    while true do
+        if IsControlJustPressed(0, 309) then 
+            TriggerEvent("Show:Chat")
+        end
+
     
-    if IsControlJustPressed(0, 38) then
-        TriggerEvent("Show:Chat")
-        
+        DisableMultiplayerChat(true) 
+        Wait(10)
     end
-    Citizen.Wait(150)
-     
-   end
 end)
