@@ -1,0 +1,26 @@
+#Chat {
+    box-sizing: border-box;
+    position: absolute;
+    width: 32.037vh;
+    height: 3.2407vh;
+    left: 1.8519vh;
+    top: 100vh; 
+    background: linear-gradient(90deg, #07263C 0%, #144D76 100%);
+    border: 0.0926vh solid #145C81;
+    border-radius: 0.5556vh;
+    outline: 0;
+    user-select: none;
+    color: #ffffff;
+    padding-left: 0.9259vh;
+    font-size: 1.3889vh;
+    animation: anim 0.3s linear forwards;
+}
+
+@keyframes anim {
+    0% {
+        top: 100vh; 
+    }
+    100% {
+        top: 36.9444vh; 
+    }
+}
