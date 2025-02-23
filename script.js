@@ -1,35 +1,36 @@
+$(document).ready(function() {
 
-window.addEventListener('message', function(event) {
-    var data = event.data
-    switch (data.action) {
-        case "show":
-            $("#Chat").show();
-            break;
+    $("#Chat").hide();
 
-        case "hide":
-            $("#Chat").hide();
-            break;
+    window.addEventListener('message', function(event) {
+        var data = event.data;
+        switch (data.action) {
+            case "show":
+                $("#Chat").show(); 
+                $("#Chat").focus(); 
+                break;
 
-        default:
-            console.log("Error")
-            break;
-    }
-})
+            case "hide":
+                $("#Chat").hide(); 
+                break;
 
+            default:
+                console.log("Error: Unbekannte Aktion");
+                break;
+        }
+    });
 
-window.onload = function() {
-    document.getElementById("Chat").focus();
-}
+    $(document).on('keyup', function(event) {
+        if (event.which == 13) {
+            let inputValue = $("#Chat").val(); 
+            $("#Chat").val(""); 
+            $("#Chat").hide(); 
+            $.post('https://New_Chat/removeFocus', JSON.stringify({}));
 
-document.onkeyup = function (data) {
-    if (data.which == 13) {
-        $("#Chat").val("");
-        $("#Chat").hide();
-        let inputValue = $("#Chat").val();
-
-         if (inputValue.startsWith("/")) {
-            $.post('https://Chat/message', JSON.stringify({input: inputValue}));
-      }
-      
-    }
-}
+            if (inputValue.startsWith("/")) {
+                $.post('https://New_Chat/message', JSON.stringify({ input: inputValue }));
+              
+            }
+        }
+    });
+});
