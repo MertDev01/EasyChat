@@ -1,4 +1,5 @@
 #Chat {
+    overflow: hidden;
     box-sizing: border-box;
     position: absolute;
     width: 32.037vh;
@@ -13,12 +14,14 @@
     color: #ffffff;
     padding-left: 0.9259vh;
     font-size: 1.3889vh;
-    animation: anim 0.3s linear forwards;
+    animation: anim 0.1s linear forwards;
+    will-change: top; 
+    backface-visibility: hidden; 
 }
 
 @keyframes anim {
     0% {
-        top: 100vh; 
+        top: 100vh;
     }
     100% {
         top: 36.9444vh; 
