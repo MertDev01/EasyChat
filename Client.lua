@@ -33,4 +33,3 @@ CreateThread(function()
         Wait(10)
     end
 end)
-x
