@@ -17,7 +17,7 @@ $(document).ready(function() {
             default:
                 console.log("Error: Unbekannte Aktion");
                 break;
-        }
+        } pp
     });
 
     $(document).on('keyup', function(event) {
