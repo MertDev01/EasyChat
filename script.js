@@ -18,7 +18,7 @@ $(document).ready(function() {
                 console.log("Error: Unbekannte Aktion");
                 break;
         }
-    });
+    });xx
 
     $(document).on('keyup', function(event) {
         if (event.which == 13) {
