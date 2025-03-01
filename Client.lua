@@ -2,7 +2,7 @@ RegisterNetEvent("Show:Chat")
 AddEventHandler("Show:Chat", function()
     SendNUIMessage({action = "show",})
     SetNuiFocus(true, true)
-    
+
 end)
 
 RegisterNetEvent("Hide:Chat")
@@ -33,3 +33,4 @@ CreateThread(function()
         Wait(10)
     end
 end)
+x
